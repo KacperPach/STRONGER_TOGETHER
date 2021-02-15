@@ -3,6 +3,7 @@ const app = new PIXI.Application({
     width: 800, height: 600, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
 });
 document.body.appendChild(app.view);
+
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // naprawia skalowanie spriteów żeby nie były rozmazane 
 
 const container = new PIXI.Container();
@@ -26,6 +27,12 @@ bunny.y = app.screen.height / 2;
 bunny.vx = 0;
 bunny.vy = 0;
 container.addChild(bunny);
+
+const AnimToFrom = (o,f0,fe) => {
+    if (o.currentFrame == fe) {
+        o.gotoAndPlay(f0);
+    } 
+}
 const dino = new PIXI.AnimatedSprite(Atextures);
 dino.x = app.screen.width * 0.1;
 dino.y = app.screen.height / 2;
@@ -34,11 +41,12 @@ dino.scale.y *=4;
 dino.animationSpeed= 0.08;
 dino.gotoAndPlay(0);
 dino.onFrameChange = () => {
-    if(dino.currentFrame == 3)
-    {
-        dino.gotoAndPlay(0);
+    AnimToFrom(dino,0,3); //idle animation
+
+    if(keyD.isDown) {
+        console.log('helo');
+        AnimToFrom(dino,4,10);
     }
-    if(1) {}
     
 };
 container.addChild(dino);
@@ -57,6 +65,15 @@ app.ticker.add(delta => gameLoop(delta));
 function gameLoop(delta){
 
     movement(container,delta);
+
+
+    console.log(container.vx);
+    console.log(container.vy);
+}
+
+function play(){
+    bunny.x += bunny.vx;
+    bunny.y += bunny.vy;
 
 }
 
