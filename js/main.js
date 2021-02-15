@@ -11,6 +11,7 @@ const container = new PIXI.Container();
 
 const container2 = new PIXI.Container();
 
+let Atextures = [];
 
 for (let i = 0; i < 24; i++) {
     const texture = PIXI.Texture.from(`sprites/dino_red/tile${i}.png`);
