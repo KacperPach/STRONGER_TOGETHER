@@ -1,8 +1,3 @@
-const keyD = keyboard("d");
-const keyS = keyboard("s");
-const keyA = keyboard("a");
-const keyW = keyboard("w");
-const keySpace = keyboard(" ");
 
 
 const app = new PIXI.Application({
@@ -26,16 +21,6 @@ container.addChild(bunny);
 
 app.ticker.add((delta) => {
 
-
-    if(keyD.isDown) {
-        container.x += 5*delta;
-    }
-
-    if(keyA.isDown) {
-        container.x -= 5*delta;
-    }
-
-    if(keySpace.isDown) {
-        container.y -= 5*delta;
-    }
+    movement(container,delta);
+    
 });
