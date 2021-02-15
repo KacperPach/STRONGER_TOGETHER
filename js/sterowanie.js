@@ -8,14 +8,14 @@ const movement = (o,delta) => {
 
 
     if(keyD.isDown) {
-        o.x += 5*delta;
+        o.vx = 5*delta;
     }
 
     if(keyA.isDown) {
-        o.x -= 5*delta;
+        o.vx = 5*delta;
     }
 
     if(keySpace.isDown) {
-        o.y -= 5*delta;
+        o.vy = 5*delta;
     }
 }
