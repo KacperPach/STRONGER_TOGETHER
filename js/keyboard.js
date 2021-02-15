@@ -1,3 +1,4 @@
+
 function keyboard(value) {
   let key = {};
   key.value = value;
@@ -41,6 +42,7 @@ function keyboard(value) {
     window.removeEventListener("keydown", downListener);
     window.removeEventListener("keyup", upListener);
   };
+  
   
   return key;
 }

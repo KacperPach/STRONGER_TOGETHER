@@ -1,4 +1,9 @@
 const keyD = keyboard("d");
+const keyS = keyboard("s");
+const keyA = keyboard("a");
+const keyW = keyboard("w");
+const keySpace = keyboard(" ");
+
 
 const app = new PIXI.Application({
     width: 800, height: 600, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
@@ -12,34 +17,25 @@ app.stage.addChild(container);
 // Create a new texture
 const texture = PIXI.Texture.from('sprites/bunny.png');
 
-// Create a 5x5 grid of bunnies
-for (let i = 0; i < 25; i++) {
-    const bunny = new PIXI.Sprite(texture);
-    bunny.anchor.set(0.5);
-    bunny.x = 1;(i % 5) * 40;
-    bunny.y = 1;///Math.floor(i / 5) * 40;
-    container.addChild(bunny);
-}
-// Move container to the center
-container.x = app.screen.width / 2;
-container.y = app.screen.height / 2;
-
-// Center bunny sprite in local container coordinates
-container.pivot.x = container.width / 2;
-container.pivot.y = container.height / 2;
+//player
+const bunny = new PIXI.Sprite(texture);
+bunny.x = app.screen.width * 0.1;
+bunny.y = app.screen.height / 2;
+container.addChild(bunny);
 
 
-
-
-// Listen for animate update
 app.ticker.add((delta) => {
-    // rotate the container!
-    // use delta to create frame-independent transform
-    container.rotation -= 0.01 * delta;
+
 
     if(keyD.isDown) {
-        container.x += 1*delta;
+        container.x += 5*delta;
     }
 
-    
+    if(keyA.isDown) {
+        container.x -= 5*delta;
+    }
+
+    if(keySpace.isDown) {
+        container.y -= 5*delta;
+    }
 });
