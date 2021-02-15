@@ -1,6 +1,4 @@
 
-let state;
-
 const app = new PIXI.Application({
     width: 800, height: 600, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
 });
@@ -50,7 +48,6 @@ const enemy = new PIXI.Sprite.from('sprites/enemy.png');
 enemy.x = 15;
 enemy.y = app.screen.height / 2;
 
-state = play();
 
 container2.addChild(enemy);
 
@@ -61,16 +58,5 @@ function gameLoop(delta){
 
     movement(container,delta);
 
-    play(delta);
-
-    console.log(bunny.vx);
-    console.log(bunny.vy);
 }
-
-function play(){
-    bunny.x += bunny.vx;
-    bunny.y += bunny.vy;
-
-}
-
 

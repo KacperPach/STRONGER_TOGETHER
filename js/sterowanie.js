@@ -6,16 +6,18 @@ const keySpace = keyboard(" ");
 
 const movement = (o,delta) => {
 
+     o.xv = 1;
 
     if(keyD.isDown) {
-        o.vx = 5*delta;
+        o.x += 5*delta*o.xv;
+        o.xv += 1*delta;
     }
 
     if(keyA.isDown) {
-        o.vx = 5*delta;
+        o.x -= 5*delta;
     }
 
     if(keySpace.isDown) {
-        o.vy = 5*delta;
+        o.y -= 5*delta;
     }
 }
