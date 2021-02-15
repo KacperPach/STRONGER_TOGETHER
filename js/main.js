@@ -66,6 +66,7 @@ function gameLoop(delta){
 
     movement(container,delta);
 
+    play(delta);
 
     console.log(container.vx);
     console.log(container.vy);
