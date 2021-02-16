@@ -15,7 +15,7 @@ const movement = (o,delta) => {
     }
 
     if(keyD.isDown) {
-        o.x += o.xv*delta;
+        o.x += o.vx*delta;
         dirp = 1;
     }
 
