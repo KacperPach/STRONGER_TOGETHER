@@ -1,4 +1,3 @@
-
 const app = new PIXI.Application({
     width: 800, height: 600, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
 });
@@ -8,6 +7,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST; // naprawia skalowanie spri
 const container = new PIXI.Container();
 
 const container2 = new PIXI.Container();
+
 
 let Atextures = [];
 
@@ -58,5 +58,19 @@ function gameLoop(delta){
 
     movement(container,delta);
 
+    if(collision(bunny, enemy)) {
+        console.log("joisen");
+    }
+}
+
+
+function collision(a, b){
+    let aBox = a.getBounds();
+    let bBox = b.getBounds();
+
+    return aBox.x + aBox.width > bBox.x &&
+           aBox.x < bBox.x + bBox.width &&
+           aBox.y + aBox.height > bBox.y &&
+           aBox.y < bBox.y + bBox.height;
 }
 
