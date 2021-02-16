@@ -26,10 +26,10 @@ bunny.x = app.screen.width * 0.1;
 bunny.y = app.screen.height / 2;
 bunny.vx = 0;
 bunny.vy = 0;
-container.addChild(bunny);
+//container.addChild(bunny);
 
 const AnimToFrom = (o,f0,fe) => {
-    if (o.currentFrame == fe) {
+    if (o.currentFrame > fe-1) {
         o.gotoAndPlay(f0);
     } 
 }
@@ -39,14 +39,30 @@ dino.y = app.screen.height / 2;
 dino.scale.x *=4;
 dino.scale.y *=4;
 dino.animationSpeed= 0.08;
+dino.anchor.set(0.5,0);
 dino.gotoAndPlay(0);
 dino.onFrameChange = () => {
-    AnimToFrom(dino,0,3); //idle animation
 
-    if(keyD.isDown) {
-        console.log('helo');
+
+    
+    if(dirp == 0){
+        
+        AnimToFrom(dino,0,3); //idle animation
+        
+    }
+    if(dirp == 1) {
+        if(dino.scale.x < 0 ) {
+            dino.scale.x *= -1;
+        }
         AnimToFrom(dino,4,10);
     }
+    if(dirp == -1) {
+        if(dino.scale.x > 0 ) {
+            dino.scale.x *= -1;
+        }
+        AnimToFrom(dino,4,10);
+    }
+
     
 };
 container.addChild(dino);
