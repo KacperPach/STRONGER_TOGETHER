@@ -6,6 +6,7 @@ const keySpace = keyboard(" ");
 let dirp = 0; // przechowóje kierunek ruszania się postaci  1=right ; -1=left
 
 function collision(a, b){
+
     let aBox = a.getBounds();
     let bBox = b.getBounds();
 
@@ -19,16 +20,16 @@ function collision(a, b){
 
 const movement = (o,delta) => {
      o.vx = 4;
-     dirp = 0;
+     din.dirp = 0;
     
     if(keyA.isDown) {
         o.x -= o.vx*delta;
-        dirp = -1;
+        din.dirp = -1;
     }
 
     if(keyD.isDown) {
         o.x += o.vx*delta;
-        dirp = 1;
+        din.dirp = 1;
     }
 
     if(keyW.isDown) {
@@ -43,8 +44,7 @@ const movement = (o,delta) => {
 //sprawdza z której strony jest kolizja
 
 const detection = (o) => {
-  
-    if(collision(dino, enemy)) {   
+    if(collision(o, enemy)) {   
         
         if(o.xb == 0){
             o.xb = o.x;

@@ -1,40 +1,60 @@
 //to narazie nie działa 
 
-const create_animated_dino = (dino) => {
-    let Atextures = [];
-    for (let i = 0; i < 24; i++) {
-        const texture = PIXI.Texture.from(`sprites/dino_red/tile${i}.png`);
-        Atextures.push(texture);
-    }
-    const AnimToFrom = (o,f0,fe) => {
-        if (o.currentFrame > fe-1) {
-            o.gotoAndPlay(f0);
-        } 
-    }
-    dino = new PIXI.AnimatedSprite(Atextures);
-    dino.x = app.screen.width * 0.1;
-    dino.y = app.screen.height / 2;
-    dino.scale.x *=4;
-    dino.scale.y *=4;
-    dino.animationSpeed= 0.2;
-    dino.anchor.set(0.5,0);
-    dino.gotoAndPlay(0);
-    dino.onFrameChange = () => {
-        if(dirp == 0){
-            AnimToFrom(dino,0,3); //idle animation  
-        }
-        if(dirp == 1) {
-            if(dino.scale.x < 0 ) {
-                dino.scale.x *= -1;
-            }
-            AnimToFrom(dino,4,10);
-        }
-        if(dirp == -1) {
-            if(dino.scale.x > 0 ) {
-                dino.scale.x *= -1;
-            }
-            AnimToFrom(dino,4,10);
-        }
-    return 
-    };
+const AnimToFrom = (o,f0,fe) => {
+    if (o.currentFrame > fe-1) {
+        o.gotoAndPlay(f0);
+    } 
 }
+
+class dinozaur {
+    constructor(numofFrames,imgpath) {
+        this.Atextures = [];
+
+        for (let i = 0; i < numofFrames; i++) {
+            this.texture = PIXI.Texture.from(`sprites/dino_red/tile${i}.png`);
+            this.Atextures.push(this.texture);
+        }
+        this.ob = new PIXI.AnimatedSprite(this.Atextures);
+        app.stage.addChild(this.ob);
+        this.ob.x = app.screen.width * 0.1;
+        this.ob.y = app.screen.height / 2;
+        this.ob.xb = 0;
+        this.ob.yb = 0;
+        this.ob.scale.x *=4;
+        this.ob.scale.y *=4;
+        this.ob.animationSpeed= 0.2;
+        this.ob.anchor.set(0.5,0);
+        this.ob.gotoAndPlay(0);
+        this.ob.onFrameChange = () => {
+
+            if(this.dirp == 0){
+        
+                AnimToFrom(this.ob,0,3); //idle animation  
+            }
+            if(this.dirp == 1) {
+                if(this.ob.scale.x < 0 ) {
+                    this.ob.scale.x *= -1;
+                }
+                AnimToFrom(this.ob,4,10);
+            }
+            if(this.dirp == -1) {
+                if(this.ob.scale.x > 0 ) {
+                    this.ob.scale.x *= -1;
+                }
+                AnimToFrom(this.ob,4,10);
+            }
+        
+        }
+       
+    }
+
+
+    
+
+
+
+}
+
+const create_animated_dino = (o) => {
+
+    }
