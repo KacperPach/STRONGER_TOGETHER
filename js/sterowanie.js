@@ -5,6 +5,18 @@ const keyW = keyboard("w");
 const keySpace = keyboard(" ");
 let dirp = 0; // przechowóje kierunek ruszania się postaci  1=right ; -1=left
 
+function collision(a, b){
+    let aBox = a.getBounds();
+    let bBox = b.getBounds();
+
+    return aBox.x + aBox.width > bBox.x &&
+           aBox.x < bBox.x + bBox.width &&
+           aBox.y + aBox.height > bBox.y &&
+           aBox.y < bBox.y + bBox.height;
+           
+}
+
+
 const movement = (o,delta) => {
      o.vx = 4;
      dirp = 0;
@@ -32,28 +44,30 @@ const movement = (o,delta) => {
 
 const detection = (o) => {
   
-
-    if(o.xb == 0){
-        o.xb = o.x;
-    }
+    if(collision(dino, enemy)) {   
+        
+        if(o.xb == 0){
+            o.xb = o.x;
+        }
     
-    if(o.yb == 0){
-        o.yb = o.y;
-    }
+        if(o.yb == 0){
+            o.yb = o.y;
+        }
 
-    if(o.xb < o.x){
-        o.x=o.xb;  
-    }
-    if(o.xb > o.x){
-        o.x=o.xb;
-    }
+        if(o.xb < o.x){
+            o.x=o.xb;  
+        }
+        if(o.xb > o.x){
+            o.x=o.xb;
+        }
    
-    if(o.yb < o.y){
-        o.y=o.yb;
-    }
+        if(o.yb < o.y){
+            o.y=o.yb;
+        }
 
-    if(o.yb > o.y){
-        o.y=o.yb;
+        if(o.yb > o.y){
+            o.y=o.yb;
+        }
     }
     o.xb = o.x;
     o.yb = o.y;
