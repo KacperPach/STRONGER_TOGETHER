@@ -20,16 +20,16 @@ function collision(a, b){
 
 const movement = (o,delta) => {
      o.vx = 4;
-     din.dirp = 0;
+     o.dirp = 0;
     
     if(keyA.isDown) {
         o.x -= o.vx*delta;
-        din.dirp = -1;
+        o.dirp = -1;
     }
 
     if(keyD.isDown) {
         o.x += o.vx*delta;
-        din.dirp = 1;
+        o.dirp = 1;
     }
 
     if(keyW.isDown) {

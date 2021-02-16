@@ -10,11 +10,13 @@ class dinozaur {
     constructor(numofFrames,imgpath) {
         this.Atextures = [];
 
+
         for (let i = 0; i < numofFrames; i++) {
-            this.texture = PIXI.Texture.from(`sprites/dino_red/tile${i}.png`);
+            this.texture = PIXI.Texture.from(imgpath+`${i}.png`);
             this.Atextures.push(this.texture);
         }
         this.ob = new PIXI.AnimatedSprite(this.Atextures);
+        this.ob.dirp = 0;
         app.stage.addChild(this.ob);
         this.ob.x = app.screen.width * 0.1;
         this.ob.y = app.screen.height / 2;
@@ -27,17 +29,17 @@ class dinozaur {
         this.ob.gotoAndPlay(0);
         this.ob.onFrameChange = () => {
 
-            if(this.dirp == 0){
+            if(this.ob.dirp == 0){
         
                 AnimToFrom(this.ob,0,3); //idle animation  
             }
-            if(this.dirp == 1) {
+            if(this.ob.dirp == 1) {
                 if(this.ob.scale.x < 0 ) {
                     this.ob.scale.x *= -1;
                 }
                 AnimToFrom(this.ob,4,10);
             }
-            if(this.dirp == -1) {
+            if(this.ob.dirp == -1) {
                 if(this.ob.scale.x > 0 ) {
                     this.ob.scale.x *= -1;
                 }
