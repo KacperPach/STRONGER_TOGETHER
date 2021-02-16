@@ -9,7 +9,6 @@ const movement = (o,delta) => {
 
      o.vx = 1;
 
-    }
     if(keyA.isDown) {
         o.x -= o.vx*delta;
         dirp = -1;
