@@ -6,9 +6,9 @@ const keySpace = keyboard(" ");
 let dirp = 0; // przechowóje kierunek ruszania się postaci  1=right ; -1=left
 
 const movement = (o,delta) => {
-
-     o.vx = 1;
-
+     o.vx = 4;
+     dirp = 0;
+    
     if(keyA.isDown) {
         o.x -= o.vx*delta;
         dirp = -1;
@@ -19,7 +19,42 @@ const movement = (o,delta) => {
         dirp = 1;
     }
 
-    if(keySpace.isDown) {
+    if(keyW.isDown) {
         o.y -= o.vx*delta;
     }
+
+    if(keyS.isDown) {
+        o.y += o.vx*delta;
+    }
+}
+
+//sprawdza z której strony jest kolizja
+
+const detection = (o) => {
+  
+
+    if(o.xb == 0){
+        o.xb = o.x;
+    }
+    
+    if(o.yb == 0){
+        o.yb = o.y;
+    }
+
+    if(o.xb < o.x){
+        o.x=o.xb;  
+    }
+    if(o.xb > o.x){
+        o.x=o.xb;
+    }
+   
+    if(o.yb < o.y){
+        o.y=o.yb;
+    }
+
+    if(o.yb > o.y){
+        o.y=o.yb;
+    }
+    o.xb = o.x;
+    o.yb = o.y;
 }

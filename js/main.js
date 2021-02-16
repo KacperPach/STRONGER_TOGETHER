@@ -20,22 +20,19 @@ for (let i = 0; i < 24; i++) {
 
 app.stage.addChild(container);
 app.stage.addChild(container2);
-//player
-const bunny = new PIXI.Sprite.from('sprites/bunny.png');
-bunny.x = app.screen.width * 0.1;
-bunny.y = app.screen.height / 2;
-bunny.vx = 0;
-bunny.vy = 0;
-//container.addChild(bunny);
 
+//player
 const AnimToFrom = (o,f0,fe) => {
     if (o.currentFrame > fe-1) {
         o.gotoAndPlay(f0);
     } 
 }
+
 const dino = new PIXI.AnimatedSprite(Atextures);
 dino.x = app.screen.width * 0.1;
 dino.y = app.screen.height / 2;
+dino.xb = 0;
+dino.yb = 0;
 dino.scale.x *=4;
 dino.scale.y *=4;
 dino.animationSpeed= 0.08;
@@ -69,22 +66,27 @@ container.addChild(dino);
 
 //enemy
 const enemy = new PIXI.Sprite.from('sprites/enemy.png');
-enemy.x = 15;
+enemy.x = 500;
 enemy.y = app.screen.height / 2;
+app.stage.addChild(enemy);
 
-
-container2.addChild(enemy);
+//container2.addChild(enemy);
 
 app.ticker.add(delta => gameLoop(delta));
 
+let isColide = false;
 
 function gameLoop(delta){
 
-    movement(container,delta);
+    movement(dino,delta);
+    //console.log(dino.x);
+    //console.log(dino.y);
+    //console.log(dino.xb);
+    //console.log(dino.yb);
 
-
-    if(collision(bunny, enemy)) {
-        console.log("joisen");
+    if(collision(dino, enemy)) {
+    
+        detection(dino);
     }
 }
 
@@ -97,4 +99,5 @@ function collision(a, b){
            aBox.x < bBox.x + bBox.width &&
            aBox.y + aBox.height > bBox.y &&
            aBox.y < bBox.y + bBox.height;
+           
 }
