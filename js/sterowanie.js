@@ -22,8 +22,8 @@ let fall = true;
 let jump = true;
 
 const movement = (o,delta) => {
-     o.vx = 4;
-     o.vy = 3;
+     o.vx = 6;
+     o.vy = 4.5;
      o.dirp = 0;
      
  
@@ -37,16 +37,17 @@ const movement = (o,delta) => {
         o.dirp = 1;
     }
 
-    if(keyW.isDown) {
-        o.y -= o.vx*delta;
-    }
-
+    //if(keyW.isDown) {
+   //     o.y -= o.vx*delta;
+    //}
+  
     if(keyS.isDown) {
         o.y += o.vx*delta;
     }
     //to fix(można przytrzymać skok)
     if(keySpace.isDown && jump == true){
         o.y -= 8;
+        
     }
     //grawitacja
     if(fall){
