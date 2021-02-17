@@ -9,12 +9,6 @@ const container = new PIXI.Container();
 
 const container2 = new PIXI.Container();
 
-
-const bPhoto = new PIXI.Sprite.from('sprites/background.png');
-bPhoto.x = 0;
-bPhoto.y = 0;
-app.stage.addChild(bPhoto);
-
 let o = new dinozaur(24,"sprites/dino_red/tile"); 
 let din2 = new dinozaur(24,"sprites/dino_gren/tile"); 
 
@@ -22,11 +16,11 @@ let din2 = new dinozaur(24,"sprites/dino_gren/tile");
 app.stage.addChild(container);
 app.stage.addChild(container2);
 
-//enemy(tymczasowo floor colider)
+
+//enemy
 const enemy = new PIXI.Sprite.from('sprites/enemy.png');
-enemy.x = 0;
-enemy.y = 355+98;
-enemy.width = app.screen.width;
+enemy.x = 500;
+enemy.y = app.screen.height / 2;
 app.stage.addChild(enemy);
 
 
@@ -55,6 +49,7 @@ function gameLoop(delta){
         movement(din2.ob,delta);
         detection(din2.ob);
     }
+
     
     
 }
