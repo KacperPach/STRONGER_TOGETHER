@@ -50,8 +50,7 @@ function gameLoop(delta){
         detection(din2.ob);
     }
 
-
+    
     
 }
-
 

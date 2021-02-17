@@ -17,11 +17,16 @@ function collision(a, b){
            
 }
 
+let fall = true;
+
+let jump = true;
 
 const movement = (o,delta) => {
      o.vx = 4;
+     o.vy = 3;
      o.dirp = 0;
-    
+     
+ 
     if(keyA.isDown) {
         o.x -= o.vx*delta;
         o.dirp = -1;
@@ -39,6 +44,22 @@ const movement = (o,delta) => {
     if(keyS.isDown) {
         o.y += o.vx*delta;
     }
+    //to fix(można przytrzymać skok)
+    if(keySpace.isDown && jump == true){
+        o.y -= 8;
+    }
+    //grawitacja
+    if(fall){
+    o.y += o.vy;
+
+    if(collision(o,enemy)){
+        fall = false;     
+        }
+    }
+    else{
+        fall = true;
+    }
+
 }
 
 //sprawdza z której strony jest kolizja

@@ -19,9 +19,10 @@ class dinozaur {
         this.ob.dirp = 0;
         app.stage.addChild(this.ob);
         this.ob.x = app.screen.width * 0.1;
-        this.ob.y = app.screen.height / 2;
+        this.ob.y = 300;
         this.ob.xb = 0;
         this.ob.yb = 0;
+        this.ob.dy=2;
         this.ob.scale.x *=4;
         this.ob.scale.y *=4;
         this.ob.animationSpeed= 0.2;
